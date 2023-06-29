@@ -1,5 +1,7 @@
 import '../assets/css/style.css';
 import '../styles/Hero.css'
+import { Link } from 'react-router-dom';
+
 
 const Hero = () => {
   return (
@@ -24,18 +26,13 @@ const Hero = () => {
     </div>
     <div className=" mt-20 flex justify-between gap-3">
       <button className="rounded-full bg-[#005AE2] text-white text-xl font-semibold py-2 px-6">
-        Sign Up
+        <Link to={"/signup"}> Sign Up </Link>
       </button>
       <button className="rounded-full bg-none text-[#005AE2] text-xl font-semibold hover:border hover:border-[#005AE2] py-1 px-6">
         Learn More
       </button>
     </div>
-    {/* <div className="mt-28 w-[50%] py-36 hero__inner">
-      <p className="text-center font-medium">
-        Seamlessly transform your long URLs into concise and shareable links
-        with just few clicks.
-      </p>
-    </div> */}
+    
   </div>
   );
 };

@@ -1,4 +1,5 @@
 import Footer from '../component/Footer';
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
@@ -90,8 +91,8 @@ const SignUp = () => {
               </button>
               <a href="#" type="reset" className="w-max p-3 -ml-3">
                 <span className="text-sm tracking-wide text-black-600 text-center">
-                  Already have an account?{' '}
-                  <span className="text-[#005AE2]">Log in</span>
+                  Already have an account?
+                 <Link to ={"/login"}  className="text-[#005AE2]"> Log in</Link>
                 </span>
               </a>
               <p className="text-center text-sm text-gray-400 mt-4 w-">
