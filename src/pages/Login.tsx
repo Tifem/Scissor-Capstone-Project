@@ -1,7 +1,21 @@
 import Footer from "../component/Footer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import {loginPage} from '../firebase'
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e:any) => {
+    e.preventDefault();
+    loginPage(email, password);
+
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <>
       <div className="2xl:container h-auto m-auto">
@@ -52,17 +66,21 @@ const Login = () => {
               <div>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email address or username"
                   className="w-full py-3 px-6 ring-1 ring-[#005AE2] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-                />
+                required />
               </div>
 
               <div className="flex flex-col items-end">
                 <input
                   type="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full py-3 px-6 ring-1 ring-[#005AE2] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-                />
+                required />
                 <button type="reset" className="w-max p-3 -mr-3">
                   <span className="text-sm tracking-wide text-blue-600">
                     Forgot your password ?
@@ -71,7 +89,7 @@ const Login = () => {
               </div>
 
               <div className="text-center">
-                <button className="w-full px-6 py-3 rounded-full bg-[#005AE2] transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
+                <button className="w-full px-6 py-3 rounded-full bg-[#005AE2] transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800" onClick={handleLogin}>
                   <span className="font-semibold text-white text-lg">
                     Log in
                   </span>

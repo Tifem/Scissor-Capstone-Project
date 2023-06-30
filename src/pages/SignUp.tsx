@@ -1,8 +1,25 @@
 import Footer from '../component/Footer';
 import { Link } from "react-router-dom";
-
+import { useState } from 'react';
+import {signUp} from '../firebase'
 
 const SignUp = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [RetypePassword, setRetypePassword] = useState('');
+
+  const handleSignUp = (e:any) => {
+    e.preventDefault();
+    signUp(email, password, username);
+
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setRetypePassword('');
+
+  };
+
   return (
     <>
     <div className="2xl:container h-auto m-auto">
@@ -54,37 +71,45 @@ const SignUp = () => {
             <div>
               <input
                 type="text"
+                value={username}
                 placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
                 className="w-full py-3 px-6 ring-1 ring-[#005AE2] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-              />
+              required />
             </div>
 
             <div>
               <input
                 type="email"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full py-3 px-6 ring-1 ring-[#005AE2] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-              />
+              required />
             </div>
 
             <div className="flex flex-col items-end">
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 className="w-full py-3 px-6 ring-1 ring-[#7e8fa8] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-              />
+              required />
             </div>
 
             <div className="flex flex-col items-end">
               <input
                 type="password"
+                value={RetypePassword}
+                onChange={(e) => setRetypePassword(e.target.value)}
                 placeholder="Retype Password"
                 className="w-full py-3 px-6 ring-1 ring-[#005AE2] rounded-xl placeholder-gray-600 bg-transparent transition disabled:ring-[#005AE2] disabled:bg-gray-100 disabled:placeholder-gray-400 invalid:ring-red-400 focus:invalid:outline-none"
-              />
+              required />
             </div>
 
             <div className='text-center'>
-              <button className="w-full px-6 py-3 rounded-full bg-[#005AE2] transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
+              <button className="w-full px-6 py-3 rounded-full bg-[#005AE2] transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800" onClick={handleSignUp}>
                 <span className="font-semibold text-white text-lg">
                   Sign up with Email
                 </span>
