@@ -1,7 +1,7 @@
 import Footer from "../component/Footer";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import {loginPage} from '../firebase'
+import {login}  from "../firebase/firebase.tsx"
 
 const Login = () => {
 
@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleLogin = (e:any) => {
     e.preventDefault();
-    loginPage(email, password);
+    login(email, password);
 
     setEmail("");
     setPassword("");

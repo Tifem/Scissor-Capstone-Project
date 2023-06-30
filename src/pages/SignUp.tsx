@@ -1,7 +1,7 @@
 import Footer from '../component/Footer';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import {signUp} from '../firebase'
+import {signUp} from '../firebase/firebase.tsx'
 
 const SignUp = () => {
   const [username, setUsername] = useState('');

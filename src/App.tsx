@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import GetInTouch from './pages/GetInTouch';
+import DynamicPage from './pages/DynamicPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/contact' element={<GetInTouch />} />
+      <Route path="/:id" element={<DynamicPage />} />
     </Routes>
   );
 }

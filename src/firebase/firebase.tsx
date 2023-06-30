@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 // Your configuration
@@ -16,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-export function signUp(email, password, username) {
+export function signUp(email:string, password:string, username:string) {
     createUserWithEmailAndPassword(auth, email, password)
         .then(function (userCredential) {
             var currentUser = userCredential.user;
@@ -36,7 +37,7 @@ export function signUp(email, password, username) {
 }
 
 // Login Form Submission
-export function loginPage(email, password) {
+export function login(email:string, password:string) {
     signInWithEmailAndPassword(auth, email, password).then(function () {
         alert('Login successful!');
     })
@@ -45,3 +46,5 @@ export function loginPage(email, password) {
         });
     return false;
 }
+
+export default getFirestore();
