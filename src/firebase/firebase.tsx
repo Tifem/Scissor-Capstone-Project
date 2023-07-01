@@ -24,11 +24,13 @@ export function signUp(email:string, password:string, username:string) {
 
             console.log({ currentUser });
 
-            updateProfile(auth.currentUser, {
-                displayName: username
-            }).then(() => {
-                alert('signUp successful!');
-            })
+            if (auth.currentUser) {
+                updateProfile(auth.currentUser, {
+                    displayName: username
+                }).then(() => {
+                    alert('signUp successful!');
+                })
+            }
 
         })
         .catch(function (error) {
